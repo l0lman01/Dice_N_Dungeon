@@ -1,0 +1,80 @@
+.hud {
+    flex-grow: 1;
+    justify-content: flex-end;
+    padding: var(--spacing-lg);
+}
+
+.hud__bottom {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.hud__face {
+    flex-direction: row;
+    align-items: center;
+    padding: var(--spacing-md);
+    background-color: var(--color-overlay);
+    border-radius: var(--radius);
+    max-width: 560px;
+}
+
+.hud__die {
+    width: 96px;
+    height: 96px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-text);
+    border-radius: 16px;
+    margin-right: var(--spacing-md);
+    transition-duration: 0.15s;
+}
+
+.hud__die--pop {
+    scale: 1.2 1.2;
+}
+
+.hud__die-value {
+    font-size: 56px;
+    -unity-font-style: bold;
+    color: var(--color-bg);
+}
+
+.hud__face-info {
+    flex-shrink: 1;
+}
+
+.hud__ability-name {
+    font-size: 26px;
+    -unity-font-style: bold;
+}
+
+.hud__ability-type {
+    font-size: 16px;
+    color: var(--color-accent);
+}
+
+.hud__ability-description {
+    font-size: 16px;
+    color: var(--color-text-dim);
+    white-space: normal;
+}
+
+.hud__bars {
+    width: 360px;
+    padding: var(--spacing-md);
+    background-color: var(--color-overlay);
+    border-radius: var(--radius);
+}
+
+.hud__bar {
+    margin: 4px 0;
+}
+
+.hud__bar--health .unity-progress-bar__progress {
+    background-color: var(--color-danger);
+}
+
+.game-over__title {
+    color: var(--color-danger);
+}

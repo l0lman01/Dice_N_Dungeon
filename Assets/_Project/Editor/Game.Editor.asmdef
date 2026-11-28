@@ -1,0 +1,19 @@
+{
+    "name": "Game.Editor",
+    "rootNamespace": "DiceNDungeon.Editor",
+    "references": [
+        "Game.Runtime",
+        "Game.UI"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,131 @@
+@import url("unity-theme://default");
+
+:root {
+    --color-bg: #120f17;
+    --color-panel: #1e1a26;
+    --color-panel-border: #3a3348;
+    --color-accent: #e8b64c;
+    --color-accent-hover: #f4cd74;
+    --color-text: #f2eee6;
+    --color-text-dim: #a49cb3;
+    --color-danger: #d9534f;
+    --color-overlay: rgba(8, 6, 12, 0.8);
+    --radius: 8px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 32px;
+    color: var(--color-text);
+    font-size: 22px;
+}
+
+.screen {
+    flex-grow: 1;
+}
+
+.is-hidden {
+    display: none;
+}
+
+.overlay-host {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.overlay {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-overlay);
+}
+
+.panel {
+    min-width: 480px;
+    padding: var(--spacing-lg);
+    background-color: var(--color-panel);
+    border-width: 2px;
+    border-color: var(--color-panel-border);
+    border-radius: var(--radius);
+    align-items: stretch;
+}
+
+.panel__title {
+    font-size: 40px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-md);
+}
+
+.panel__text {
+    -unity-text-align: middle-center;
+    color: var(--color-text-dim);
+    white-space: normal;
+    margin-bottom: var(--spacing-md);
+}
+
+.menu-button {
+    height: 56px;
+    margin: var(--spacing-sm) 0;
+    font-size: 24px;
+    -unity-font-style: bold;
+    color: var(--color-bg);
+    background-color: var(--color-accent);
+    border-width: 0;
+    border-radius: var(--radius);
+    transition-duration: 0.12s;
+}
+
+.menu-button:hover {
+    background-color: var(--color-accent-hover);
+    scale: 1.03 1.03;
+}
+
+.menu-button:active {
+    scale: 0.97 0.97;
+}
+
+.menu-button--secondary {
+    color: var(--color-text);
+    background-color: var(--color-panel-border);
+}
+
+.menu-button--secondary:hover {
+    background-color: #4b4360;
+}
+
+.unity-base-slider__label {
+    color: var(--color-text);
+    min-width: 220px;
+}
+
+.unity-base-slider__tracker {
+    background-color: var(--color-panel-border);
+    border-width: 0;
+    border-radius: 4px;
+}
+
+.unity-base-slider__dragger {
+    background-color: var(--color-accent);
+    border-width: 0;
+    border-radius: 4px;
+}
+
+.unity-progress-bar__background {
+    background-color: var(--color-panel-border);
+    border-width: 0;
+    border-radius: 4px;
+}
+
+.unity-progress-bar__progress {
+    background-color: var(--color-accent);
+    border-radius: 4px;
+}
+
+.unity-progress-bar__title {
+    color: var(--color-text);
+    font-size: 16px;
+    -unity-font-style: bold;
+}

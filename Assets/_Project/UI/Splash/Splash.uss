@@ -1,0 +1,67 @@
+.splash {
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-bg);
+    transition-duration: 0.5s;
+}
+
+.splash--fade-out {
+    opacity: 0;
+}
+
+.splash__logo {
+    align-items: center;
+    transition-duration: 0.8s;
+}
+
+.splash__logo--hidden {
+    opacity: 0;
+    scale: 0.9 0.9;
+}
+
+.splash__studio-logo {
+    width: 453px;
+    height: 367px;
+    background-color: #ffffff;
+    background-image: url("project://database/Assets/_Project/UI/Splash/PressFStudioLogo.png");
+    -unity-background-scale-mode: scale-to-fit;
+    border-width: 0 0 14px 0;
+    border-color: var(--color-text-dim);
+    border-radius: 24px;
+    margin-bottom: var(--spacing-lg);
+    transition-duration: 0.08s;
+}
+
+.splash__studio-logo--pressed {
+    translate: 0 12px;
+    border-bottom-width: 2px;
+    -unity-background-image-tint-color: var(--color-accent);
+}
+
+.splash__name {
+    font-size: 64px;
+    -unity-font-style: bold;
+    letter-spacing: 12px;
+}
+
+.splash__prompt {
+    margin-top: 96px;
+    font-size: 28px;
+    color: var(--color-accent);
+    transition-duration: 0.5s;
+}
+
+.splash__prompt--dim {
+    opacity: 0.25;
+}
+
+.splash__prompt--hidden {
+    opacity: 0;
+}
+
+.splash__footnote {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    font-size: 16px;
+    color: var(--color-text-dim);
+}
