@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:Style src="MainMenu.uss" />
+    <ui:Template name="SettingsPanel" src="../Settings/SettingsPanel.uxml" />
+    <ui:VisualElement name="mainMenuRoot" class="screen main-menu">
+        <ui:Label name="gameTitle" text="DICE N DUNGEON" class="main-menu__title" />
+        <ui:Label name="studioCredit" text="a Press F Studio game" class="main-menu__subtitle" />
+        <ui:VisualElement name="menuButtons" class="main-menu__buttons">
+            <ui:Button name="playButton" text="Play" class="menu-button" />
+            <ui:Button name="settingsButton" text="Settings" class="menu-button menu-button--secondary" />
+            <ui:Button name="quitButton" text="Quit" class="menu-button menu-button--secondary" />
+        </ui:VisualElement>
+        <ui:Instance template="SettingsPanel" name="settingsPanel" class="overlay-host is-hidden" />
+    </ui:VisualElement>
+</ui:UXML>

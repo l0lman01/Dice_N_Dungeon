@@ -50,6 +50,7 @@ namespace DiceNDungeon.Player
         public bool IsRolling { get; private set; }
         public bool IsInvulnerable { get; private set; }
         public float CooldownRemaining => Mathf.Max(0f, nextRollTime - Time.time);
+        public float Cooldown => cooldown;
 
         public event Action RollStarted;
         public event Action RollEnded;

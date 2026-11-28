@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="settingsRoot" class="overlay">
+        <ui:VisualElement class="panel">
+            <ui:Label text="Settings" class="panel__title" />
+            <ui:Slider name="volumeSlider" label="Volume" low-value="0" high-value="1" value="0.8" />
+            <ui:Slider name="sensitivitySlider" label="Mouse sensitivity" low-value="0.1" high-value="3" value="1" />
+            <ui:Button name="settingsBackButton" text="Back" class="menu-button menu-button--secondary" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

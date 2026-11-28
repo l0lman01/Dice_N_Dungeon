@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:Style src="Splash.uss" />
+    <ui:VisualElement name="splashRoot" class="screen splash">
+        <ui:VisualElement name="logo" class="splash__logo splash__logo--hidden">
+            <ui:Label name="fKey" text="F" class="splash__key" />
+            <ui:Label name="studioName" text="PRESS F STUDIO" class="splash__name" />
+        </ui:VisualElement>
+        <ui:Label name="prompt" text="Press F to start" class="splash__prompt splash__prompt--hidden" />
+        <ui:Label name="footnote" text="(paying respects is optional)" class="splash__footnote" />
+    </ui:VisualElement>
+</ui:UXML>
