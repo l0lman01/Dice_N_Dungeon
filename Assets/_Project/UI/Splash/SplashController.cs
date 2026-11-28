@@ -28,7 +28,7 @@ namespace DiceNDungeon.UI
         private MenuInputReader input;
         private VisualElement root;
         private VisualElement logo;
-        private Label fKey;
+        private VisualElement studioLogo;
         private Label prompt;
         private bool acceptingInput;
         private bool leaving;
@@ -46,7 +46,7 @@ namespace DiceNDungeon.UI
 
             root = GetComponent<UIDocument>().rootVisualElement.Q("splashRoot");
             logo = root.Q("logo");
-            fKey = root.Q<Label>("fKey");
+            studioLogo = root.Q("studioLogo");
             prompt = root.Q<Label>("prompt");
 
             // Remove the hidden class one frame later so the USS transition plays.
@@ -66,7 +66,7 @@ namespace DiceNDungeon.UI
         {
             if (!acceptingInput || leaving) return;
             leaving = true;
-            fKey.AddToClassList("splash__key--pressed");
+            studioLogo.AddToClassList("splash__studio-logo--pressed");
             prompt.text = "Respect paid.";
             root.AddToClassList("splash--fade-out");
             StartCoroutine(LoadNextScene());
