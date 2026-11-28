@@ -23,7 +23,7 @@
     width: 453px;
     height: 367px;
     background-color: #ffffff;
-    background-image: url("project://database/Assets/_Project/UI/Splash/F%20studio%20logo.png");
+    background-image: url("project://database/Assets/_Project/UI/Splash/PressFStudioLogo.png");
     -unity-background-scale-mode: scale-to-fit;
     border-width: 0 0 14px 0;
     border-color: var(--color-text-dim);
