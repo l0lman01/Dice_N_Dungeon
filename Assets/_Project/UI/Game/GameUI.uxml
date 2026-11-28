@@ -1,0 +1,43 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:Template name="SettingsPanel" src="project://database/Assets/_Project/UI/Settings/SettingsPanel.uxml?fileID=9197481963319205126&amp;guid=b9e63b3263784912b335bdd60da41d9e&amp;type=3#SettingsPanel"/>
+    <Style src="project://database/Assets/_Project/UI/Game/GameUI.uss?fileID=7433441132597879392&amp;guid=7a059f3fa7154ea9b04a2c2545d78601&amp;type=3#GameUI"/>
+    <ui:VisualElement name="gameUiRoot" picking-mode="Ignore" class="screen">
+        <ui:VisualElement name="hud" picking-mode="Ignore" class="hud">
+            <ui:VisualElement picking-mode="Ignore" class="hud__bottom">
+                <ui:VisualElement name="facePanel" class="hud__face">
+                    <ui:VisualElement name="faceDie" class="hud__die">
+                        <ui:Label name="faceValue" text="1" class="hud__die-value"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="hud__face-info">
+                        <ui:Label name="abilityName" text="No ability" class="hud__ability-name"/>
+                        <ui:Label name="abilityType" text="Roll to get a face" class="hud__ability-type"/>
+                        <ui:Label name="abilityDescription" text="" class="hud__ability-description"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="bars" class="hud__bars">
+                    <ui:ProgressBar name="healthBar" title="HP" low-value="0" high-value="1" value="1" class="hud__bar hud__bar--health" style="align-self: stretch;"/>
+                    <ui:ProgressBar name="rollBar" title="Roll" low-value="0" high-value="1" value="1" class="hud__bar"/>
+                    <ui:ProgressBar name="abilityBar" title="Ability" low-value="0" high-value="1" value="1" class="hud__bar"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="pauseMenu" class="overlay-host overlay is-hidden">
+            <ui:VisualElement class="panel">
+                <ui:Label text="Paused" class="panel__title"/>
+                <ui:Button name="resumeButton" text="Resume" class="menu-button"/>
+                <ui:Button name="pauseSettingsButton" text="Settings" class="menu-button menu-button--secondary"/>
+                <ui:Button name="pauseMainMenuButton" text="Main menu" class="menu-button menu-button--secondary"/>
+                <ui:Button name="pauseQuitButton" text="Quit" class="menu-button menu-button--secondary"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="gameOver" class="overlay-host overlay is-hidden">
+            <ui:VisualElement class="panel">
+                <ui:Label text="GAME OVER" class="panel__title game-over__title"/>
+                <ui:Label text="Your die rolled its last face." class="panel__text"/>
+                <ui:Button name="retryButton" text="Retry" class="menu-button"/>
+                <ui:Button name="gameOverMainMenuButton" text="Main menu" class="menu-button menu-button--secondary"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Instance template="SettingsPanel" name="settingsPanel" class="overlay-host is-hidden"/>
+    </ui:VisualElement>
+</ui:UXML>

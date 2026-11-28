@@ -14,17 +14,33 @@ Unity 6000.6.9f1, URP, Input System 1.20 (project-wide actions), Cinemachine 6.6
 Assets/_Project/
   Scripts/      Game.Runtime.asmdef, namespace DiceNDungeon.<Folder>
     Core/       Stat + StatModifier (pure C#), OrientationMath (pure C#), event channels (ScriptableObject)
-    Input/      PlayerInputReader (namespace DiceNDungeon.Inputs): the ONLY class that touches the Input System
+    Input/      PlayerInputReader + MenuInputReader + InputMaps (namespace DiceNDungeon.Inputs): the ONLY place that touches the Input System
+    Camera/     CameraSensitivity (own asmdef Game.Cinemachine, namespace DiceNDungeon.CameraControl)
     Player/     PlayerOrientation, PlayerMotor, PlayerRoll, PlayerDie, PlayerAbilities, PlayerStats, PlayerContext
     Dice/       DieFaceData, DieDefinition (ScriptableObjects), DieRoller, DieOrientation (pure C#)
     Abilities/  Ability -> PassiveAbility (stat modifiers) / ActiveAbility (Activate) -> ShockwaveAbility example
     Combat/     Health, IDamageable, IInvulnerabilitySource, DamageInfo
+    Core/       also GameSettings (PlayerPrefs: volume, mouse sensitivity), GameFlow (scene loads, quit, resets pause state)
+  UI/           UI Toolkit, Game.UI.asmdef, namespace DiceNDungeon.UI, one feature folder = .uxml + .uss + controller
+    Theme/DiceTheme.tss  shared tokens/styles (assigned in PanelSettings.asset)
+    Splash/     "Press F Studio" opening screen: waits for the F key (Menu/PressF), then loads MainMenu
+    MainMenu/   Play / Settings / Quit
+    Settings/   SettingsPanel.uxml template + SettingsPanel.cs (plain C#), reused by main menu and pause
+    Game/       GameUI.uxml: HUD (HudController) + pause + game over (GameMenusController)
   Editor/       Game.Editor.asmdef (custom inspectors, debug tools)
   Tests/EditMode/ Game.Tests.EditMode.asmdef (NUnit tests for pure C# logic)
 ```
 Player flow: `PlayerInputReader` -> `PlayerOrientation` (faces camera) -> `PlayerMotor` (moves, can be overridden) ;
 `PlayerRoll.RollEnded` -> `PlayerDie.Roll()` -> `FaceRolled` -> `PlayerAbilities` equips the face's `Ability`.
 The die mesh is a child (`dieVisual`); the root with the CharacterController never rolls.
+
+Scene flow: `Splash` -> `MainMenu` -> gameplay scene (MainMenuController.gameSceneName). Scenes and UI objects are created with the
+Editor menu **Dice n Dungeon > UI** (`Editor/UISetupMenu.cs`). Input map `Menu`: Pause (Esc / Start), PressF (F).
+
+## UI conventions (UI Toolkit)
+- All styling in USS (no inline `style=` in UXML, no `element.style.*` in C# except data-driven values like a face color).
+- Show/hide with the `is-hidden` class; overlays use `overlay-host overlay`. UXML `name` camelCase, USS classes kebab-case (BEM: `block__element--modifier`).
+- Query UI elements in `Start` (UIDocument builds its tree in its own OnEnable).
 
 ## Coding conventions
 - Inspector fields are always `[SerializeField] private`, never `public`, each with a `[Tooltip]` and an end-of-line comment giving meaning and unit:
@@ -43,7 +59,7 @@ The die mesh is a child (`dieVisual`); the root with the CharacterController nev
 - When moving or renaming an asset, move its `.meta` too (`git mv` both) to keep the GUID, or prefab references break.
 - New files and folders need a `.meta` with a unique GUID; commit them.
 - Don't hand-edit scenes or prefabs (YAML) unless asked: describe the Editor steps instead.
-- Avoid `UnityEngine.Input` (old input manager); use `PlayerInputReader`.
+- Avoid `UnityEngine.Input` (old input manager); use `PlayerInputReader` / `MenuInputReader`.
 - There is no Unity Editor in cloud sessions: code can't be compiled or tested there, so review carefully and ask the user to check the Console and Test Runner.
 
 ## Team workflow

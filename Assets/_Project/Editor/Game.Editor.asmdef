@@ -2,7 +2,8 @@
     "name": "Game.Editor",
     "rootNamespace": "DiceNDungeon.Editor",
     "references": [
-        "Game.Runtime"
+        "Game.Runtime",
+        "Game.UI"
     ],
     "includePlatforms": [
         "Editor"

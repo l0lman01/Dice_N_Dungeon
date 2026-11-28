@@ -1,0 +1,22 @@
+.main-menu {
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-bg);
+}
+
+.main-menu__title {
+    font-size: 96px;
+    -unity-font-style: bold;
+    letter-spacing: 8px;
+    color: var(--color-accent);
+}
+
+.main-menu__subtitle {
+    margin-bottom: 64px;
+    color: var(--color-text-dim);
+    -unity-text-align: middle-center;
+}
+
+.main-menu__buttons {
+    width: 360px;
+}
