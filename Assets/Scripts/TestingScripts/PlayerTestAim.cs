@@ -8,6 +8,9 @@ public class PlayerAim : MonoBehaviour
     [Header("Camera")]
     [SerializeField] private Camera mainCamera;
 
+    [Header("References")]
+    [SerializeField] private PlayerMovement playerMovement;
+
     [Header("Distance Dead Zone")]
     [SerializeField] private float deadZoneRadius = 0.75f;
 
@@ -20,7 +23,6 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] private float maxRotationSpeed = 720f;
 
     private Rigidbody rb;
-
     private Vector3 aimDirection;
 
     private void Awake()
@@ -35,11 +37,18 @@ public class PlayerAim : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Ne pas modifier l'orientation pendant une esquive
+        if (playerMovement != null && playerMovement.IsDodging)
+            return;
+
         RotateTowardsMouse();
     }
 
     private void CalculateAimDirection()
     {
+        // Réinitialisation pour éviter de conserver une ancienne direction
+        aimDirection = Vector3.zero;
+
         if (Mouse.current == null || mainCamera == null)
             return;
 

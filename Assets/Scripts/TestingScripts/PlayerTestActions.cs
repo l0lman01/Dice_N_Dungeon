@@ -43,24 +43,33 @@ public class PlayerActions : MonoBehaviour
 
     private void OnEnable()
     {
-        attackAction.action.Enable();
-        dodgeAction.action.Enable();
+        if (attackAction != null)
+            attackAction.action.Enable();
+
+        if (dodgeAction != null)
+            dodgeAction.action.Enable();
     }
 
     private void OnDisable()
     {
-        attackAction.action.Disable();
-        dodgeAction.action.Disable();
+        if (attackAction != null)
+            attackAction.action.Disable();
+
+        if (dodgeAction != null)
+            dodgeAction.action.Disable();
     }
 
     private void Update()
     {
-        if (attackAction.action.WasPressedThisFrame())
+        if (attackAction != null &&
+            attackAction.action.WasPressedThisFrame())
         {
             PerformAttack();
         }
 
-        if (dodgeAction.action.WasPressedThisFrame() && !isDodging)
+        if (dodgeAction != null &&
+            dodgeAction.action.WasPressedThisFrame() &&
+            !isDodging)
         {
             StartCoroutine(PerformDodge());
         }
@@ -119,6 +128,15 @@ public class PlayerActions : MonoBehaviour
 
     private IEnumerator PerformDodge()
     {
+        if (inputHandler == null ||
+            cameraTransform == null ||
+            diceVisual == null ||
+            playerMovement == null)
+        {
+            Debug.LogWarning("PlayerActions: Missing Dodge reference.");
+            yield break;
+        }
+
         isDodging = true;
         playerMovement.SetDodging(true);
 
@@ -131,7 +149,7 @@ public class PlayerActions : MonoBehaviour
         localDirection.y = 0f;
         localDirection.Normalize();
 
-        // Détermine si la roulade utilise l'axe X ou Z
+        // Détermine l'axe de rotation
         Vector3 localRotationAxis;
 
         if (Mathf.Abs(localDirection.z) >= Mathf.Abs(localDirection.x))
@@ -145,7 +163,6 @@ public class PlayerActions : MonoBehaviour
                 Vector3.back * Mathf.Sign(localDirection.x);
         }
 
-        // Conversion de l'axe local vers le monde
         Vector3 worldRotationAxis =
             transform.TransformDirection(localRotationAxis);
 
@@ -166,8 +183,6 @@ public class PlayerActions : MonoBehaviour
         while (elapsedTime < dodgeDuration)
         {
             float progress = elapsedTime / dodgeDuration;
-
-            // Déplacement avec une accélération et une décélération
             float smoothProgress = Mathf.SmoothStep(0f, 1f, progress);
 
             rb.MovePosition(
@@ -196,7 +211,7 @@ public class PlayerActions : MonoBehaviour
     {
         Vector2 input = inputHandler.MoveInput;
 
-        // Sans input directionnel : roulade vers l'avant
+        // Sans input : esquive vers l'avant du personnage
         if (input.sqrMagnitude < 0.01f)
             return transform.forward;
 
